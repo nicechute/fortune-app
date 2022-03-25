@@ -1,0 +1,696 @@
+{
+    "version": "0.1.0",
+    "name": "fortune",
+    "instructions": [
+      {
+        "name": "initialize",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "splVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "splMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "state",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "swapFee",
+            "type": "u64"
+          },
+          {
+            "name": "burnCost",
+            "type": "u64"
+          },
+          {
+            "name": "feeScalar",
+            "type": "u64"
+          },
+          {
+            "name": "lamportMin",
+            "type": "u64"
+          },
+          {
+            "name": "lamportMax",
+            "type": "u64"
+          },
+          {
+            "name": "ptokenMax",
+            "type": "u64"
+          },
+          {
+            "name": "ptokenMin",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "createPool",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "nftAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "probPool",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "ptokenMint",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "lamportVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "ptokenVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "nativeMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "lamportAmount",
+            "type": "u64"
+          },
+          {
+            "name": "ptokenAmount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "buy",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "poolLamportVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "poolPtokenVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "probPool",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "fortuneLamportVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userPtokenVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "ptokenMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "nativeMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "ptokenAmount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "requestBurn",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "fortuneLamportVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userPtokenVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userBurn",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "probPool",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "ptokenMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "nativeMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "ptokenAmount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "userWithdraw",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "userPtokenVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userAccount",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "ptokenMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "tokenAmount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "executeBurn",
+        "accounts": [
+          {
+            "name": "fortuneAuthority",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "user",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "userBurn",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "probPool",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "ptokenMint",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "slotHashes",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "burnAmount",
+            "type": "u64"
+          }
+        ]
+      },
+      {
+        "name": "claimAsset",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "nftAccount",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "probPool",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "closePool",
+        "accounts": [
+          {
+            "name": "signer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "recipient",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "nftAccount",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "probPool",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "ptokenMint",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "poolLamportVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "poolPtokenVault",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "nftMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "nativeMint",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "tokenProgram",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "rent",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      }
+    ],
+    "accounts": [
+      {
+        "name": "ProbPool",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "authority",
+              "type": "publicKey"
+            },
+            {
+              "name": "nftAuthority",
+              "type": "publicKey"
+            },
+            {
+              "name": "lamportVault",
+              "type": "publicKey"
+            },
+            {
+              "name": "ptokenVault",
+              "type": "publicKey"
+            },
+            {
+              "name": "ptokenMint",
+              "type": "publicKey"
+            },
+            {
+              "name": "nftMint",
+              "type": "publicKey"
+            },
+            {
+              "name": "claimed",
+              "type": "bool"
+            },
+            {
+              "name": "toClaim",
+              "type": "bool"
+            },
+            {
+              "name": "lamportSupply",
+              "type": "u64"
+            },
+            {
+              "name": "ptokenSupply",
+              "type": "u64"
+            },
+            {
+              "name": "outstandingPtokens",
+              "type": "u64"
+            }
+          ]
+        }
+      },
+      {
+        "name": "State",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "authority",
+              "type": "publicKey"
+            },
+            {
+              "name": "burnCost",
+              "type": "u64"
+            },
+            {
+              "name": "feeScalar",
+              "type": "u64"
+            },
+            {
+              "name": "swapFee",
+              "type": "u64"
+            },
+            {
+              "name": "lamportInitMin",
+              "type": "u64"
+            },
+            {
+              "name": "lamportInitMax",
+              "type": "u64"
+            },
+            {
+              "name": "ptokenInitMax",
+              "type": "u64"
+            },
+            {
+              "name": "ptokenInitMin",
+              "type": "u64"
+            }
+          ]
+        }
+      }
+    ],
+    "errors": [
+      {
+        "code": 6000,
+        "name": "BidTooLow",
+        "msg": "Bid is too low"
+      },
+      {
+        "code": 6001,
+        "name": "PoolClosed",
+        "msg": "Prob pool is closed"
+      },
+      {
+        "code": 6002,
+        "name": "InvalidAskAuth",
+        "msg": "Only seller can change ask"
+      },
+      {
+        "code": 6003,
+        "name": "LockedListing",
+        "msg": "Locked listing"
+      },
+      {
+        "code": 6004,
+        "name": "ZeroAsk",
+        "msg": "Ask cannot be less than zero"
+      },
+      {
+        "code": 6005,
+        "name": "BurnLimit",
+        "msg": "Maximum burn amount is 9"
+      },
+      {
+        "code": 6006,
+        "name": "OutstandingProb",
+        "msg": "Outstanding ptokens, cannot close pool"
+      },
+      {
+        "code": 6007,
+        "name": "ActiveClaim",
+        "msg": "Active claim against pool"
+      },
+      {
+        "code": 6008,
+        "name": "NoClaim",
+        "msg": "No active claim on this pool"
+      },
+      {
+        "code": 6009,
+        "name": "LamportInitMin",
+        "msg": "Lamport init amount too low"
+      },
+      {
+        "code": 6010,
+        "name": "LamportInitMax",
+        "msg": "Lamport init amount too high"
+      },
+      {
+        "code": 6011,
+        "name": "PtokenInitMin",
+        "msg": "pToken init amount too low"
+      },
+      {
+        "code": 6012,
+        "name": "PtokenInitMax",
+        "msg": "pToken init amount too high"
+      },
+      {
+        "code": 6013,
+        "name": "SoldOut",
+        "msg": "No more pTokens left to buy"
+      }
+    ],
+    "metadata": {
+      "address": "7tSKVgnzdSAStFuDzPjqE7mhCtXrnX9KLTsbJuGrn52C"
+    }
+  }

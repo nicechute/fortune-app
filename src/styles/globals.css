@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  background-color: #ffddf4;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* example: override wallet button style */
+.wallet-adapter-button:not([disabled]):hover {
+  background-color: #707070;
+}
+
+.text-green {
+  color: #bcfd49;
+}
+
+.border-green {
+  border-color: #bcfd49;
+}
+
+.text-gold {
+  color:#ffd700;
+}
+
+.text-purple {
+  color:#B026FF;
+}
+
+.text-pink {
+  color:#FF10F0;
+}
+
+.text-blue {
+  color:#4666FF
+}
+
+.fill-gold {
+  fill:#ffd700;
+}
+
+.shadow-pink {
+  box-shadow: 0 0px 35px 0px #FF10F0, 0 4px 6px -4px #FF10F0;
+  animation: pulsate 3s ease-out infinite;
+}
+
+.border-pink {
+  border-color: #FF10F0;
+}
+
+@-webkit-keyframes pulsate {
+  0%   { box-shadow: 0 0 0 #FF10F0 }
+  50%  { box-shadow: 5px 5px 50px #FF10F0; }
+  100% { box-shadow: 0 0 0 #FF10F0; }
+}
